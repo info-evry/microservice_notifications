@@ -4,6 +4,7 @@
 
 ```bash
 npm i
-npm run migrate:run
+docker-compose up -d
+npm run migrate
 npm run start:dev
 ```

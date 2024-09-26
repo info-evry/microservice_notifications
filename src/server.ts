@@ -1,19 +1,21 @@
 import cors from "cors";
 import express from "express";
 import glob from "glob";
-import morgan from "morgan";
 import path from "path";
 import { config } from "./config/config";
+import { PrismaClient } from "@prisma/client";
 
 export class Server {
     private host: string;
     private port: number;
     private app: express.Application;
+    private prisma: PrismaClient;
 
     constructor(host: string, port: number) {
         this.host = host;
         this.port = port;
         this.app = express();
+        this.prisma = new PrismaClient();
 
         /**
          * @see README#Security
@@ -65,6 +67,10 @@ export class Server {
 
     public getApp(): express.Application {
         return this.app;
+    }
+
+    public getPrismaClient(): PrismaClient {
+        return this.prisma;
     }
 
     public start(): express.Application {
