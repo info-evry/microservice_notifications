@@ -2,17 +2,28 @@
     "name": "app-asso",
     "version": "1.0.0",
     "description": "",
+    "license": "MIT",
+    "author": "BEAUVILLE Mathis",
     "main": "index.js",
     "scripts": {
+        "build": "tsc && copyfiles -f ./src/config/convict.json ./src/config/configuration.json ./dist/src/config/ && copyfiles -f ./src/public/csv/template.csv ./dist/src/public/csv/",
+        "docker": "npm run start:docker",
         "start:dev": "nodemon --exec \"ts-node\" src/index.ts",
         "start:docker": "node ./dist/src/index.js --port 3000",
         "test": "jest",
-        "test:dev": "jest --watch --verbose",
-        "build": "tsc && copyfiles -f ./src/config/convict.json ./src/config/configuration.json ./dist/src/config/ && copyfiles -f ./src/public/csv/template.csv ./dist/src/public/csv/",
-        "docker": "npm run start:docker"
+        "test:dev": "jest --watch --verbose"
     },
-    "author": "BEAUVILLE Mathis",
-    "license": "MIT",
+    "dependencies": {
+        "@types/cors": "^2.8.13",
+        "convict": "^6.2.4",
+        "copyfiles": "^2.4.1",
+        "cors": "^2.8.5",
+        "express": "^4.17.2",
+        "glob": "^7.2.0",
+        "jsonwebtoken": "^9.0.0",
+        "morgan": "^1.10.0",
+        "ts-node": "^10.9.1"
+    },
     "devDependencies": {
         "@types/body-parser": "^1.19.2",
         "@types/convict": "^4.2.1",
@@ -29,16 +40,5 @@
         "supertest": "^6.2.2",
         "ts-jest": "^29.1.1",
         "typescript": "^4.5.5"
-    },
-    "dependencies": {
-        "@types/cors": "^2.8.13",
-        "convict": "^6.2.4",
-        "copyfiles": "^2.4.1",
-        "cors": "^2.8.5",
-        "express": "^4.17.2",
-        "glob": "^7.2.0",
-        "jsonwebtoken": "^9.0.0",
-        "morgan": "^1.10.0",
-        "ts-node": "^10.9.1"
     }
 }

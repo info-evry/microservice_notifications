@@ -1,4 +1,4 @@
-import * as request from "supertest";
+import request from "supertest";
 import { serverInstance } from "../server";
 
 describe("Health check", () => {

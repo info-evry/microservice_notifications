@@ -50,8 +50,15 @@ export class Server {
             if (_route === undefined) {
                 continue;
             }
-            let r = await import(_route);
-            r.default(this.app);
+
+            let route_file;
+            try {
+                route_file = await import(_route);
+                route_file.default(this.app);
+            } catch (error) {
+                console.log(`Failed to load ${route[i]}\n${error}`);
+            }
+
             console.log(`Route ${route[i]} loaded.`);
         }
     }
