@@ -21,7 +21,7 @@ docker-compose up -d
 
 Normalement il devrait il avoir  :
 ```bash
-DATABASE_URL="postgresql://root:root@localhost:5432/my_database?schema=public
+DATABASE_URL="postgresql://root:root@localhost:5433/my_database?schema=public
 ```
 ### Etape 4 : Création de votre Base de données avec prisma
 
