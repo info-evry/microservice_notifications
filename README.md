@@ -43,3 +43,10 @@ Elle permet de visualiser votre BDD
 npm run start:dev
 ```
 Une page web devrait s'ouvrir avec le port http://localhost:3000
+
+
+## Infos 
+- PORT BDD AIE MARKET : 5432
+- PORT BDD NOTIFICATIONS : 5433
+- PORT BDD AUTHENTIFICATIONS : 5435
+- PORT BDD PLANNING : 5436
