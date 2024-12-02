@@ -1,8 +1,9 @@
+import React from "react";
 import { Request, Response } from "express";
-import { serverInstance } from "../server";
-import { env } from "process";
 import { createTransport } from "nodemailer";
 import { render } from "@react-email/components";
+import EmailBienvenue from "../../emails/emailBienvenue";
+import EmailCommande from "../../emails/emailCommande";
 
 
 
@@ -14,7 +15,7 @@ export class DefaultMiddleware {
 
 
     //Mail envoi pour un nouveau membre
-    public static async sendMailNewMember(firstname: String, mail: String) {
+    public static async sendMailNewMember(req: Request, res: Response, mail: string) {
 
         const transport = createTransport({
             host: process.env.EMAIL_SERVER_HOST,
@@ -26,7 +27,7 @@ export class DefaultMiddleware {
         });
 
         //apel de l'email concerné
-        const email = render(<EmailBienvenue firstname={firstname}/>);
+        const email = render(<EmailBienvenue firstname={req.body.firstname} name={req.body.name} noCommande={req.body.noCommande} />);
 
         await transport.sendMail({
             from: process.env.EMAIL_FROM,
@@ -39,7 +40,7 @@ export class DefaultMiddleware {
 
 
      //Mail envoi pour une commande
-     public static async sendMailCommande(firstname: String, noCommande : String, mail : String) {
+     public static async sendMailCommande(req : Request, res: Response, mail: string) {
 
         const transport = createTransport({
             host: process.env.EMAIL_SERVER_HOST,
@@ -51,7 +52,7 @@ export class DefaultMiddleware {
         });
 
         //apel de l'email concerné
-        const email = render(<EmailCommande firstname={firstname}, noCommande={noCommande} />);
+        const email = render(<EmailCommande firstname={req.body.firstname} name={req.body.name} noCommande={req.body.noCommande} />);
 
         await transport.sendMail({
             from: process.env.EMAIL_FROM,

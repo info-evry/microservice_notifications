@@ -1,11 +1,9 @@
 import React from "react";
 import { Html } from "@react-email/html";
 import { Tailwind } from "@react-email/tailwind";
-import { Img } from "@react-email/img";
-improt {CSS} from "template";
 
 // Mail example 
-const Email = ({ firstname }: { name: string }) => {
+const Email = ({ firstname }: { firstname: string }) => {
   return (
     <Html lang="fr">
       <Tailwind>
