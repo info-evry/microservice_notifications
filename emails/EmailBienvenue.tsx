@@ -2,6 +2,9 @@ import React from "react";
 import { Html } from "@react-email/html";
 import { Tailwind } from "@react-email/tailwind";
 
+
+
+
 // Mail example 
 const Email = ({ firstname }: { firstname: string }) => {
   return (

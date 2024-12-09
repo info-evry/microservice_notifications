@@ -13,7 +13,8 @@
         "start:docker": "node ./dist/src/index.js --port 3000",
         "test": "jest",
         "test:dev": "jest --watch --verbose",
-        "email": "email dev"
+        "email": "email dev",
+        "studio" : "prisma studio"
     },
     "dependencies": {
         "@prisma/client": "^5.20.0",

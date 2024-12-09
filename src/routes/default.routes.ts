@@ -4,8 +4,8 @@ import { DefaultMiddleware } from "../middleware/default.middleware";
 export default function (app: Application) {
     app.get("/", DefaultMiddleware.healthcheck);
    // app.get("/example", DefaultMiddleware.exampleToDelete);
-    app.get("/getConfirmationNewMembre/", DefaultMiddleware.sendMailNewMember);
-    app.get("/getConfirmationCommande/", DefaultMiddleware.sendMailCommande);
+    app.post("/postConfirmationNewMembre", DefaultMiddleware.sendMailNewMember);
+    app.post("/postConfirmationCommande", DefaultMiddleware.sendMailCommande);
 
 
 
