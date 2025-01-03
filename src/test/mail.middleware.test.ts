@@ -2,11 +2,13 @@ import request from "supertest";
 import { serverInstance } from "../server";
 import exp from "constants";
 
+const RECEIVER_MAIL = "asso@info-evry.fr";
+
 describe("Mail middleware", () => {
     it("should returns a 200 normal request", async () => {
         const response = await request(serverInstance.getApp()).post("/mailNewMember").send({
             firstname: "test",
-            mail: "a.couteau77@gmail.com",
+            mail: RECEIVER_MAIL,
             name: "test",
         });
         expect(response.status).toBe(200);
@@ -25,7 +27,7 @@ describe("Mail middleware", () => {
         const response = await request(serverInstance.getApp()).post("/mailCommand").send({
             firstname: "test",
             name: "test",
-            mail: "a.couteau77@gmail.com",
+            mail: RECEIVER_MAIL,
             noCommande: "",
         });
         expect(response.status).toBe(200);
