@@ -1,9 +1,9 @@
 import { Application } from "express";
 import { DefaultMiddleware } from "../middleware/default.middleware";
+import { MailMiddleware } from "../middleware/mail.middleware";
 
 export default function (app: Application) {
     app.get("/", DefaultMiddleware.healthcheck);
-    // app.get("/example", DefaultMiddleware.exampleToDelete);
-    app.post("/mailNewMember", DefaultMiddleware.sendMailNewMember);
-    app.post("/mailCommand", DefaultMiddleware.sendMailCommande);
+    app.post("/mailNewMember", MailMiddleware.sendMailNewMember);
+    app.post("/mailCommand", MailMiddleware.sendMailCommande);
 }

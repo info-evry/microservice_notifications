@@ -4,6 +4,7 @@ import { z } from "zod";
 export const newMemberMailSchema = z.object({
     firstname: z.string().nonempty(),
     name: z.string().nonempty(),
+    mail: z.string().email().nonempty(),
 });
 export const confirmationCommandMailSchema = z.object({
     firstname: z.string(),
