@@ -1,0 +1,40 @@
+name: Run Tests
+
+on:
+  push:
+    branches:
+      - main    # ou toute autre branche à surveiller
+  pull_request:
+    branches:
+      - main    # ou toute autre branche à surveiller
+  workflow_dispatch:    # Permet de déclencher manuellement le workflow
+
+jobs:
+  test:
+    runs-on: ubuntu-latest   # Spécifie l'environnement dans lequel exécuter
+
+    steps:
+      # Étape 1 : Check-out le code
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # Étape 2 : Installer Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'   # Spécifiez la version de Node.js que vous utilisez
+
+      # Étape 3 : Installer les dépendances
+      - name: Install dependencies
+        run: npm install  # Ou `yarn install` selon votre gestionnaire de paquets
+
+      # Étape 4 : Lancer les tests
+      - name: Run tests
+        run: npm test    # Ou `yarn test` si vous utilisez yarn
+
+      # Étape 5 : Ajouter une action pour sauvegarder les résultats des tests si nécessaire
+      - name: Upload test results
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-results
+          path: test-results.xml  # Exemple pour les résultats de test au format XML
