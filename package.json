@@ -13,10 +13,14 @@
         "start:docker": "node ./dist/src/index.js --port 3000",
         "test": "jest",
         "test:dev": "jest --watch --verbose",
+        "email": "email dev",
         "studio": "prisma studio"
     },
     "dependencies": {
         "@prisma/client": "^5.20.0",
+        "@react-email/components": "^0.0.15",
+        "@react-email/img": "0.0.10",
+        "@react-email/tailwind": "0.0.9",
         "@types/cors": "^2.8.13",
         "convict": "^6.2.4",
         "copyfiles": "^2.4.1",
@@ -24,7 +28,9 @@
         "express": "^4.17.2",
         "glob": "^7.2.0",
         "jsonwebtoken": "^9.0.0",
-        "morgan": "^1.10.0"
+        "morgan": "^1.10.0",
+        "nodemailer": "^6.9.16",
+        "zod": "^3.24.1"
     },
     "devDependencies": {
         "@types/body-parser": "^1.19.2",
@@ -34,7 +40,7 @@
         "@types/jest": "^29.5.6",
         "@types/jsonwebtoken": "^9.0.2",
         "@types/morgan": "^1.9.3",
-        "@types/node": "^16.18.111",
+        "@types/node": "^16.18.123",
         "@types/supertest": "^2.0.11",
         "@types/uuid": "^8.3.4",
         "jest": "^29.7.0",

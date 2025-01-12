@@ -13,3 +13,4 @@ src/config/*.key.pub
 .env
 *tmp
 tmp*
+.react-email
