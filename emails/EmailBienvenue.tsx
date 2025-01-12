@@ -5,7 +5,7 @@ import { Tailwind } from "@react-email/tailwind";
 
 
 
-// Mail example 
+/*Mail qui est envoyé à la suite d'un nouveau membre */
 const Email = ({ firstname }: { firstname: string }) => {
   return (
     <Html lang="fr">

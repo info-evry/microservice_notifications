@@ -2,7 +2,7 @@ import React from "react";
 import { Html } from "@react-email/html";
 import { Tailwind } from "@react-email/tailwind";
 
-// Mail example
+/* Mail qui est envoyé à la suite d'une commande */
 // const Email = ({ firstname }: { name: string },{  noCommande }: { name: string } ) => {
 const Email = ({
     firstname,
@@ -36,7 +36,7 @@ const Email = ({
 
                     {/* Main Content commande*/}
                     <p style={text}>
-                        Bien joué pour ta commande ! Bienvenue {firstname} !!! Pour toutes
+                        Bien joué pour ta commande {firstname} !!! Pour toutes
                         questions, n'hésite pas à nous contacter !
                     </p>
 
