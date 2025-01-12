@@ -1,9 +1,12 @@
+import { PrismaClient } from "@prisma/client";
 import cors from "cors";
+import dotenv from "dotenv";
 import express from "express";
 import glob from "glob";
 import path from "path";
 import { config } from "./config/config";
-import { PrismaClient } from "@prisma/client";
+
+dotenv.config();
 
 export class Server {
     private host: string;

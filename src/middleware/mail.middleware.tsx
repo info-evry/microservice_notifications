@@ -1,11 +1,11 @@
-import React from "react";
+import { render } from "@react-email/components";
 import { Request, Response } from "express";
 import { createTransport } from "nodemailer";
-import { render } from "@react-email/components";
+import React from "react";
+import { ZodError } from "zod";
 import EmailBienvenue from "../../emails/EmailBienvenue";
 import EmailCommande from "../../emails/EmailCommande";
-import { ZodError } from "zod";
-import { newMemberMailSchema, confirmationCommandMailSchema } from "../schema/send-mail";
+import { confirmationCommandMailSchema, newMemberMailSchema } from "../schema/send-mail";
 export class MailMiddleware {
     //Mail envoi pour un nouveau membre
     public static async sendMailNewMember(req: Request, res: Response) {
@@ -85,12 +85,14 @@ export class MailMiddleware {
                     res.status(200).send("Mail command sent");
                 })
                 .catch((err) => {
+                    console.log(err);
                     res.status(500).send({
                         message: "Email not sent",
                         detail: err,
                     });
                 });
         } catch (error) {
+            console.log(error);
             if (error instanceof ZodError) {
                 return res.status(400).json({
                     message: "Zod Error",
