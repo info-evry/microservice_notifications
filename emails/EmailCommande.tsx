@@ -1,6 +1,6 @@
-import React from "react";
 import { Html } from "@react-email/html";
 import { Tailwind } from "@react-email/tailwind";
+import React from "react";
 
 // Mail example
 // const Email = ({ firstname }: { name: string },{  noCommande }: { name: string } ) => {
@@ -36,8 +36,8 @@ const Email = ({
 
                     {/* Main Content commande*/}
                     <p style={text}>
-                        Bien joué pour ta commande ! Bienvenue {firstname} !!! Pour toutes
-                        questions, n'hésite pas à nous contacter !
+                        Bien joué pour ta commande numéro #{noCommande} ! Bienvenue {firstname} !!!
+                        Pour toutes questions, n'hésite pas à nous contacter !
                     </p>
 
                     {/* mail prévoyance */}

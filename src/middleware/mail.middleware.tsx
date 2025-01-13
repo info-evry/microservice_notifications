@@ -55,7 +55,7 @@ export class MailMiddleware {
     public static async sendMailCommande(req: Request, res: Response) {
         try {
             //Check input
-            const body = confirmationCommandMailSchema.parse(await req.body);
+            const body = confirmationCommandMailSchema.parse(req.body);
             //Define the transport sender informations
             const transport = createTransport({
                 host: process.env.EMAIL_SERVER_HOST,
@@ -68,21 +68,21 @@ export class MailMiddleware {
             //Get the HTML content of the email
             const email = render(
                 <EmailCommande
-                    firstname={req.body.firstname}
-                    name={req.body.name}
-                    noCommande={req.body.noCommande}
+                    firstname={body.firstname}
+                    name={body.name}
+                    noCommande={body.noCommande}
                 />,
             );
             //Send the email
             await transport
                 .sendMail({
                     from: process.env.EMAIL_FROM,
-                    to: req.body.mail,
+                    to: body.mail,
                     subject: "Ma commande chez Asso Info Evry",
                     html: email,
                 })
                 .then(() => {
-                    res.status(200).send("Mail command sent");
+                    res.status(200).send({ message: "Mail command sent" });
                 })
                 .catch((err) => {
                     console.log(err);
